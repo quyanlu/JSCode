@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Lazy-Load</title>
+	<style>
+		.img {
+			width:400px;
+			height:400px;
+			object-fit: contain;
+			margin-bottom: 20px;
+			background-color: gray;
+		}
+		.pic {
+		// 必要的img样式
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="img">
+			// 注意我们并没有为它引入真实的src
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/0f0ee21cebed4823b3e0ef99b3aa1bca.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50bc2.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50bc3.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50bc4.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50bc5.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50b6c.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50bc7.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a828fe50bc.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a8269fe50bc.jpg">
+		</div>
+		<div class="img">
+			<img class="pic" alt="加载中" data-src="http://10.21.64.23:8085/image/0.0.80.40.0/6f1a60db7a09439d971ab1a826fe50bc.jpg">
+		</div>
+	</div>
+<!--	<script src="./imgLazyLoad.js">-->
+<!--	</script>-->
+
+
+	<script src="Second/NewJQuery.js">
+		Promise.resolve().then(res => {
+			console.log('promise_1')
+		})
+		setTimeout(() => {
+			console.log('setTime1')
+		}, 0)
+		var root = document.getElementById('root')
+		// root.addEventListener('click', () => {
+		//   console.log('root click')
+		// })
+		// root.click()
+		console.log('script 1')
+	</script>
+	<script>
+		Promise.resolve().then(res => {
+			console.log('promise_2')
+		})
+		setTimeout(() => {
+			console.log('setTime2')
+		}, 10)
+		console.log('script 2')
+	</script>
+	<script>
+		Promise.resolve().then(res => {
+			console.log('promise_3')
+		})
+		setTimeout(() => {
+			console.log('setTime3')
+		}, 0)
+		console.log('script 3')
+	</script>
+</body>
+</html>

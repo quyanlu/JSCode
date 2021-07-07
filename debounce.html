@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		#layout {
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="layout"></div>
+	<button id="button">取消防抖</button>
+	<script src="./debounce.js"></script>
+	<script>
+		let count = 1;
+		let container = document.getElementById('layout');
+
+		function getUserAction(e) {
+			container.innerHTML = count++;
+		};
+
+		let setUseAction = debounce(getUserAction, 3000, true);
+
+		container.onmousemove = setUseAction;
+
+		document.getElementById("button").addEventListener('click', function(){
+			setUseAction.cancel();
+		})
+	</script>
+</body>
+</html>

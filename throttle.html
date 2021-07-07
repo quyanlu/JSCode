@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		#layout {
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="layout"></div>
+	<button id="button">取消防抖</button>
+	<script src="./throttle.js"></script>
+	<script>
+		let count = 1;
+		let container = document.getElementById('layout');
+		function getUserAction() {
+			container.innerHTML = count++
+		}
+		// let setUserAction = throttle(getUserAction, 3000);
+		// container.onmousemove = setUserAction;
+		container.onmousemove = throttle(getUserAction, 1000);
+		container.onmousemove = throttle(getUserAction, 1000, {
+			leading: false
+		});
+		container.onmousemove = throttle(getUserAction, 1000, {
+			trailing: false
+		});
+	</script>
+	<script src="./newPromise.js"></script>
+</body>
+</html>
