@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实现一个全局的Modal弹窗</title>
+	<style>
+		#modal {
+			height: 200px;
+			width: 200px;
+			line-height: 200px;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			border: 1px solid black;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<button id="open">打开弹窗</button>
+	<button id="close">关闭弹窗</button>
+	<button id="openTwo">打开另一个弹窗</button>
+</body>
+<script>
+	const Modal = (function() {
+		let modal = null;
+		return function() {
+			if (!modal) {
+				modal = document.createElement('div');
+				modal.innerText = '全局的Modal';
+				modal.id = 'modal';
+				modal.style.display = 'none';
+				document.body.appendChild(modal);
+			}
+			return modal;
+		};
+	})();
+	document.getElementById('open').addEventListener('click', function() {
+		const modal = new Modal();
+		modal.innerText = '我是打开弹窗';
+		modal.style.display = 'block';
+	});
+
+	document.getElementById('close').addEventListener('click', function() {
+		const modal = new Modal();
+		modal.style.display = 'none';
+	});
+
+	document.getElementById('openTwo').addEventListener('click', function() {
+		const modal = new Modal();
+		modal.innerText = '我是打开另一个弹窗';
+		modal.style.display = 'block';
+	});
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实现一个全局的Modal弹窗Es6版</title>
+	<style>
+		#modal {
+			height: 200px;
+			width: 200px;
+			line-height: 200px;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			border: 1px solid black;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<button id="open">打开弹窗</button>
+	<button id="close">关闭弹窗</button>
+	<button id="openTwo">打开另一个弹窗</button>
+</body>
+<script>
+	class Modal {
+		constructor(name) {
+			this.name = name;
+			console.log(name, 'ssssssssss');
+			if (!Modal.instance) {
+				this.modal = document.createElement('div');
+				this.modal.style.display = 'none';
+				this.modal.id = 'modal';
+				console.log(this.modal);
+				Modal.instance = this;
+			}
+			return Modal.instance;
+		}
+
+		show() {
+			this.modal.innerText = this.name;
+			this.modal.style.display = 'block';
+			document.body.appendChild(this.modal);
+		}
+
+		close() {
+			this.modal.style.display = 'none';
+		}
+	}
+	const modal1 = new Modal('Modal');
+	const modal2 = new Modal('新的Modal');
+	document.getElementById('open').addEventListener('click', function() {
+		modal1.show();
+	});
+	document.getElementById('openTwo').addEventListener('click', function() {
+		modal2.show();
+	});
+
+	document.getElementById('close').addEventListener('click', function() {
+		const modal = new Modal();
+		modal.close();
+	});
+</script>
+</html>
