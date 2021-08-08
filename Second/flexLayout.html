@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.item00 {
+			display: flex;
+			width: 1200px;
+			height: 100px;
+		}
+
+		.item0 {
+			width: 300px;
+			background-color: red;
+		}
+		.item1 {
+			flex: 1;
+			background-color: green;
+		}
+		.item2 {
+			flex: 1 2 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="main" class="item00">
+		<div class="item0">红色</div>
+		<div class="item1">蓝色</div>
+		<div class="item2">带有更多内容的绿色啊</div>
+	</div>
+</body>
+<script>
+	let obj = {
+		a: {
+			b: {
+				c: 666,
+			},
+		},
+	};
+
+	let str = 'a.b.c';
+	const getData = (obj, str) => {
+		str.split('.').forEach(element => {
+			console.log(element,"element")
+			obj = obj[element];
+			console.log(obj,"objobjobjobj")
+		});
+		console.log(obj,"weibuobjobjobjobj")
+		return obj;
+	};
+	console.log(getData(obj, str));
+</script>
+</html>
