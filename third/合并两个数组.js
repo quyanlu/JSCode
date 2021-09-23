@@ -4,21 +4,17 @@
 * */
 
 function merger(arr1, arr2) {
-	let newArr = [];
-	arr2.forEach((item) => {
-		let value = item + item;
-		newArr.push(value);
+	let newArr2 = arr2.map((item) => {
+		return item + item;
 	});
-	let newAllArr = [...arr1, ...newArr].sort();
+	let arr3 = [...arr1, ...newArr2].sort();
 	let result = [];
-	newAllArr.forEach((item) => {
-		item.split('').reduce((val, key) => {
-			if (val === key) {
-				result.push(val);
-			} else {
-				result.push(item);
-			}
-		});
+	arr3.forEach((item)=>{
+		if(item.split('')[0] === item.split('')[1]) {
+			result.push(item.split('')[0])
+		}else {
+			result.push(item)
+		}
 	});
 	return result;
 }
